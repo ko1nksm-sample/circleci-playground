@@ -5,7 +5,7 @@ jobs:
       - image: circleci/ruby
     steps:
       - checkout
-      - run: cat none
+      - run: ls
       - store_test_results:
           path: report
       - store_artifacts:
