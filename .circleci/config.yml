@@ -18,7 +18,9 @@ jobs:
             mkdir -p ~/report/shellspec
             /bin/false
           when: always
-      - run: cp report/results_junit.xml ~/report/shellspec/
+      - run:
+          command: cp report/results_junit.xml ~/report/shellspec/
+          when: always
       - store_test_results:
           path: ~/report
       - store_artifacts:
