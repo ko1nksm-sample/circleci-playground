@@ -12,9 +12,3 @@ jobs:
     steps:
       - checkout
       - run: shellcheck test.sh
-workflows:
-  version: 2
-  all:
-    jobs:
-      - build
-      - lint
