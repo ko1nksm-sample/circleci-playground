@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.11.3
+      - image: koalaman/shellcheck-alpine
     steps:
       - checkout
-      - run: echo okok
+      - run: shellcheck test.sh
