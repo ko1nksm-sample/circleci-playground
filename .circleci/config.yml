@@ -5,7 +5,6 @@ jobs:
       - image: alpine
     steps:
       - run: apk add --no-cache ca-certificates
-      - run: update-ca-certificates
       - checkout
       - run: ls
       - store_test_results:
