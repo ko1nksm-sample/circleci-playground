@@ -1,14 +1,15 @@
 version: 2
 jobs:
-  cat:
+  build:
     docker:
       - image: alpine
     steps:
       - checkout
+      - run: git --version
       - run: cat test.sh
-  lint:
-    docker:
-      - image: koalaman/shellcheck-alpine
-    steps:
-      - checkout
-      - run: shellcheck test.sh
+#  lint:
+#    docker:
+#      - image: koalaman/shellcheck-alpine
+#    steps:
+#      - checkout
+#      - run: shellcheck test.sh
