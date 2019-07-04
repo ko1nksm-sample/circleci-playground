@@ -6,11 +6,12 @@ jobs:
     steps:
       - run: apk add --quiet --no-cache ca-certificates
       - checkout
-      - run: ls
+      - run: mkdir ~/rspec
+      - run: cp report/results_junit.xml ~/rspec/rspec.xml
       - store_test_results:
-          path: report
+          path: ~/rspec
       - store_artifacts:
-          path: report/shellspec
+          path: report
 #  lint:
 #    docker:
 #      - image: koalaman/shellcheck-alpine
