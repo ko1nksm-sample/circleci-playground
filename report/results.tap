@@ -1,0 +1,24 @@
+1..23
+ok 1 - libexec/reporter.sh read_time_log() does not read anything if file missing
+ok 2 - libexec/reporter.sh read_time_log() reads log data if file exists
+ok 3 - libexec/reporter.sh buffer() when initial state is not present
+ok 4 - libexec/reporter.sh buffer() when initial state is empty
+ok 5 - libexec/reporter.sh buffer() when initial state is not open
+ok 6 - libexec/reporter.sh buffer() when initial state is not flowed
+ok 7 - libexec/reporter.sh buffer() when something is in the buffer is present
+ok 8 - libexec/reporter.sh buffer() when something is in the buffer is not empty
+ok 9 - libexec/reporter.sh buffer() = sets to the buffer and opened
+ok 10 - libexec/reporter.sh buffer() |= when the buffer is empty sets to the buffer and opened
+ok 11 - libexec/reporter.sh buffer() |= when the buffer is not empty not sets to the buffer and opened
+ok 12 - libexec/reporter.sh buffer() += when the buffer is empty sets to the buffer and opened
+ok 13 - libexec/reporter.sh buffer() += when the buffer is not empty not sets to the buffer and opened
+ok 14 - libexec/reporter.sh buffer() <|> opens the buffer
+ok 15 - libexec/reporter.sh buffer() >|< closes the buffer
+ok 16 - libexec/reporter.sh buffer() >|< when not flowed does not clear the buffer
+ok 17 - libexec/reporter.sh buffer() >|< when flowed clears the buffer
+ok 18 - libexec/reporter.sh buffer() >>> when the buffer is open outputs the buffer
+ok 19 - libexec/reporter.sh buffer() >>> when the buffer is open outputs same things
+ok 20 - libexec/reporter.sh buffer() >>> when the buffer is close not outputs the buffer
+ok 21 - libexec/reporter.sh htmlescape() escapes special characters
+ok 22 - libexec/reporter.sh htmlattrs() creates html attributes
+ok 23 - libexec/reporter.sh remove_escape_sequence() removes escape sequence
