@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  cat:
     docker:
       - image: alpine
     steps:
