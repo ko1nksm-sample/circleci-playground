@@ -6,3 +6,9 @@ jobs:
     steps:
       - checkout
       - run: cat test.sh
+  lint:
+    docker:
+      - image: koalaman/shellcheck-alpine
+    steps:
+      - checkout
+      - run: shellcheck test.sh
