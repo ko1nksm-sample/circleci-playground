@@ -2,14 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: alpine
+      - image: wiremind/alpine-curl-ca-certificates
     steps:
       - checkout
       - run: ls
       - store_test_results:
           path: report
       - store_artifacts:
-          path: report/junit
+          path: report/shellspec
 #  lint:
 #    docker:
 #      - image: koalaman/shellcheck-alpine
