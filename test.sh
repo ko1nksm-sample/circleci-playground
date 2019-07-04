@@ -1,3 +1,3 @@
 #!/bin/sh
 
-if
+echo ok
