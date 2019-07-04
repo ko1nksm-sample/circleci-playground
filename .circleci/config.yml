@@ -10,7 +10,7 @@ jobs:
       - store_test_results:
           path: report
       - store_artifacts:
-          path: report/junit
+          path: report/shellspec
 #  lint:
 #    docker:
 #      - image: koalaman/shellcheck-alpine
