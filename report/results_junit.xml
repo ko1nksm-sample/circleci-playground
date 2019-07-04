@@ -1,40 +1,622 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-	<testsuite tests="12" failures="10" time="0.740" name="failing-tests">
-		<properties>
-			<property name="go.version" value="go1.8.3"></property>
-		</properties>
-		<testcase classname="failing-tests" name="it_should_support_defer_even_on_fails" time="0.020"></testcase>
-		<testcase classname="failing-tests" name="it_should_assert_command" time="0.000">
-			<failure message="Failed 1" type="">+ it_should_assert_command&#xA;+ assert_true &#39;ls /xxxtmp&#39;&#xA;+ ls /xxxtmp&#xA;ls: /xxxtmp: No such file or directory&#xA;+ assert_eq 1 0 &#39;expecting command &#39;\&#39;&#39;ls /xxxtmp&#39;\&#39;&#39; to succeed&#39;&#xA;+ description=&#39;expecting command &#39;\&#39;&#39;ls /xxxtmp&#39;\&#39;&#39; to succeed&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40mexpecting command &#39;ls /xxxtmp&#39; to succeed (&#39;1&#39; == &#39;0&#39;) �[m&#xA;######################################## FAILED TEST: expecting command &#39;ls /xxxtmp&#39; to succeed (&#39;1&#39; == &#39;0&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:19:it_should_assert_command</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_assert_command_with_description" time="0.000">
-			<failure message="Failed 2" type="">+ it_should_assert_command_with_description&#xA;+ assert_true &#39;ls /xxxtmp&#39; &#39;assert_true with a description&#39;&#xA;+ ls /xxxtmp&#xA;ls: /xxxtmp: No such file or directory&#xA;+ assert_eq 1 0 &#39;assert_true with a description&#39;&#xA;+ description=&#39;assert_true with a description&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40massert_true with a description (&#39;1&#39; == &#39;0&#39;) �[m&#xA;######################################## FAILED TEST: assert_true with a description (&#39;1&#39; == &#39;0&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:25:it_should_assert_command_with_description�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_negate_assert_match_correctly" time="0.000">
-			<failure message="Failed 3" type="">+ it_should_negate_assert_match_correctly&#xA;+ assert_nmatch hallo ll&#xA;+ __SPEC_SH_NEGATE=1&#xA;+ assert_match hallo ll&#xA;+ set +o pipefail&#xA;+ printf %s hallo&#xA;+ grep -E -m1 -o ll&#xA;+ head -n1&#xA;+ grep -E ll&#xA;ll&#xA;+ assert_eq 0 0 &#39;checking &#39;\&#39;&#39;hallo&#39;\&#39;&#39; to match /ll/&#39;&#xA;+ description=&#39;checking &#39;\&#39;&#39;hallo&#39;\&#39;&#39; to match /ll/&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40mchecking &#39;hallo&#39; to match /ll/ (&#39;0&#39; != &#39;0&#39;) �[m&#xA;######################################## FAILED TEST: checking &#39;hallo&#39; to match /ll/ (&#39;0&#39; != &#39;0&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:30:it_should_negate_assert_match_correctly�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_compare_exit_code" time="0.010">
-			<failure message="Failed 4" type="">+ it_should_compare_exit_code&#xA;+ false&#xA;+ assert_eq 0 0&#xA;+ description=&#xA;+ set +x&#xA;######################################## PASSED TEST: &#39;0&#39; == &#39;0&#39;&#xA;+ assert_eq 0 0 &#39;0 should be 0&#39;&#xA;+ description=&#39;0 should be 0&#39;&#xA;+ set +x&#xA;######################################## PASSED TEST: 0 should be 0 (&#39;0&#39; == &#39;0&#39;)&#xA;+ assert_eq 0 2&#xA;+ description=&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40m&#39;0&#39; == &#39;2&#39; �[m&#xA;######################################## FAILED TEST: &#39;0&#39; == &#39;2&#39;&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:35:it_should_compare_exit_code�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_compare_string" time="0.000">
-			<failure message="Failed 5" type="">+ it_should_compare_string&#xA;++ echo hallo&#xA;++ tr l x&#xA;+ assert_eq haxxo haggo&#xA;+ description=&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40m&#39;haxxo&#39; == &#39;haggo&#39; �[m&#xA;######################################## FAILED TEST: &#39;haxxo&#39; == &#39;haggo&#39;&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:45:it_should_compare_string</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_compare_string_with_description" time="0.000">
-			<failure message="Failed 6" type="">+ it_should_compare_string_with_description&#xA;++ echo hallo&#xA;++ tr l x&#xA;+ assert_eq haxxo haggo &#39;transforming string should work&#39;&#xA;+ description=&#39;transforming string should work&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40mtransforming string should work (&#39;haxxo&#39; == &#39;haggo&#39;) �[m&#xA;######################################## FAILED TEST: transforming string should work (&#39;haxxo&#39; == &#39;haggo&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:51:it_should_compare_string_with_description�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_match_regexp" time="0.320">
-			<failure message="Failed 7" type="">+ it_should_match_regexp&#xA;+ sleep 0.3&#xA;+ assert_match aaa:88X09 &#39;aaa:[0-9]{5}&#39;&#xA;+ set +o pipefail&#xA;+ printf %s aaa:88X09&#xA;+ grep -E -m1 -o &#39;aaa:[0-9]{5}&#39;&#xA;+ head -n1&#xA;+ grep -E &#39;aaa:[0-9]{5}&#39;&#xA;+ assert_eq 1 0 &#39;checking &#39;\&#39;&#39;aaa:88X09&#39;\&#39;&#39; to match /aaa:[0-9]{5}/&#39;&#xA;+ description=&#39;checking &#39;\&#39;&#39;aaa:88X09&#39;\&#39;&#39; to match /aaa:[0-9]{5}/&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40mchecking &#39;aaa:88X09&#39; to match /aaa:[0-9]{5}/ (&#39;1&#39; == &#39;0&#39;) �[m&#xA;######################################## FAILED TEST: checking &#39;aaa:88X09&#39; to match /aaa:[0-9]{5}/ (&#39;1&#39; == &#39;0&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:57:it_should_match_regexp�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_negate_assert_correctly" time="0.000">
-			<failure message="Failed 8" type="">+ it_should_negate_assert_correctly&#xA;+ assert_false &#39;ls /&#39; &#39;this test should fail&#39;&#xA;+ __SPEC_SH_NEGATE=1&#xA;+ assert_true &#39;ls /&#39; &#39;this test should fail&#39;&#xA;+ ls /&#xA;Applications&#xA;Library&#xA;Network&#xA;System&#xA;Users&#xA;Volumes&#xA;bin&#xA;cores&#xA;dev&#xA;etc&#xA;home&#xA;installer.failurerequests&#xA;net&#xA;opt&#xA;private&#xA;sbin&#xA;tmp&#xA;usr&#xA;var&#xA;+ assert_eq 0 0 &#39;this test should fail&#39;&#xA;+ description=&#39;this test should fail&#39;&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40mthis test should fail (&#39;0&#39; != &#39;0&#39;) �[m&#xA;######################################## FAILED TEST: this test should fail (&#39;0&#39; != &#39;0&#39;)&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:64:it_should_negate_assert_correctly�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_negate_assert_eq_correctly" time="0.000">
-			<failure message="Failed 9" type="">+ it_should_negate_assert_eq_correctly&#xA;+ assert_neq 1 1&#xA;+ __SPEC_SH_NEGATE=1&#xA;+ assert_eq 1 1&#xA;+ description=&#xA;+ set +x&#xA;�[1;37;41mfailed expectation:�[m �[1;38;40m&#39;1&#39; != &#39;1&#39; �[m&#xA;######################################## FAILED TEST: &#39;1&#39; != &#39;1&#39;&#xA;+ exit 1&#xA;error code: 1&#xA;error occured in �[1;38;40m./failing-tests.sh:69:it_should_negate_assert_eq_correctly�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="it_should_reflect_exit_code" time="0.000">
-			<failure message="Failed 10" type="">+ it_should_reflect_exit_code&#xA;+ return 3&#xA;+ res=3&#xA;+ set +x&#xA;error code: 3&#xA;error occured in �[1;38;40m./failing-tests.sh:74:it_should_reflect_exit_code�[m</failure>
-		</testcase>
-		<testcase classname="failing-tests" name="after_all" time="0.000"></testcase>
-	</testsuite>
+<testsuites tests="453" failures="0" time="1.79" name="">
+  <testsuite id="0" tests="12" failures="0" skipped="0" name="spec/core/dsl/data_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:37">
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style reads data as stdin with call evaluation type"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style reads data as stdin with invoke evaluation type"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style reads data as stdin with run evaluation type"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style reads data as stdin with filter"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style variable expansion not expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style variable expansion :raw not expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper block style variable expansion :expand expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper function style reads data as stdin from function"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper function style reads data as stdin from function with filter"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper string style reads data as stdin from string"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper string style reads data as stdin from quoted string"></testcase>
+    <testcase classname="spec/core/dsl/data_spec.sh" name="Data helper string style reads data as stdin from string with filter"></testcase>
+  </testsuite>
+  <testsuite id="1" tests="8" failures="0" skipped="0" name="spec/core/dsl/text_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:37">
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text outputs to stdout"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text outputs to variable"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text not expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text :raw not expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text :expand expands the variable"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text outputs to stdout and not expands the variable with filter"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text :raw outputs to stdout and not expands the variable with filter"></testcase>
+    <testcase classname="spec/core/dsl/text_spec.sh" name="%text outputs to stdout and expands the variable with filter"></testcase>
+  </testsuite>
+  <testsuite id="2" tests="52" failures="0" skipped="0" name="spec/core/dsl_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:37">
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_example_group() calls yield block"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() skippes the all if skipped outside of example"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() skipps the rest if skipped inside of example"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is fail if failed before skipping"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is unimplemented if there is nothing inside of example"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is failed if FAILED switch is on"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is warned and be status unhandled if UNHANDLED_STATUS switch is on"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is warned and be stdout unhandled if UNHANDLED_STDOUT switch is on"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is warned and be stderr unhandled if UNHANDLED_STDOUT switch is on"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is success if example ends successfully"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is todo if FAILED and PENDING switch is on"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_invoke_example() is fixed if PENDING switch is on but not FAILED"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation runs successfully turns off the NOT_IMPLEMENTED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation runs successfully turns on the EVALUATION switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation runs successfully outputs EVALUATION"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation type missing turns off the NOT_IMPLEMENTED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation type missing turns on the EVALUATION switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation type missing turns on the FAILED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when evaluation type missing outputs SYNTAX_ERROR"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when already executed evaluation is syntax error"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when already executed expectation turns off the NOT_IMPLEMENTED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when already executed expectation turns on the EVALUATION switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when already executed expectation turns on the FAILED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_when() when already executed expectation outputs SYNTAX_ERROR"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement exit normally turns off the SYNTAX_ERROR switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement exit normally turns off the FAILED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement exit normally calls specified statement"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement is syntax error turns on the SYNTAX_ERROR switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement is syntax error turns on the FAILED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when execute statement is syntax error does not call specified statement"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_statement() when already skipped does not call specified statement"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_the() turns off the NOT_IMPLEMENTED switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_the() turns on the EXPECTATION switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when inside of example outputs SKIP"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when inside of example turns on the SKIP switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when inside of example sets skip related variables"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when outside of example does not output SKIP"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when already skipped does not output SKIP"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when already skipped turns on the SKIP switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() when already skipped sets skip related variables"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() with conditional when satisfy condition outputs SKIP"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() with conditional when satisfy condition turns on the SKIP switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() with conditional when not satisfy condition does not outputs SKIP"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_skip() with conditional when not satisfy condition turns off the SKIP switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when inside of example outputs PENDING"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when inside of example turns on the PENDING switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when already failed does not output PENDING"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when already failed turns off the PENDING switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when already skipped does not output PENDING"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when already skipped turns off the PENDING switch"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when outside of example does not output PENDING"></testcase>
+    <testcase classname="spec/core/dsl_spec.sh" name="core/dsl.sh shellspec_pending() when outside of example turns on the PENDING switch"></testcase>
+  </testsuite>
+  <testsuite id="3" tests="23" failures="0" skipped="0" name="spec/core/evaluation_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation outputs to stdout and stderr"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation can able to change variable."></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation not restore mocked function after evaluation"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation calls shellspec_evaluation_cleanup() after evaluation"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation accepts evaluatable string"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh call evaluation ensures errno 0 before evaluating function"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh run evaluation calls external command"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh run evaluation calls shellspec_evaluation_cleanup() after evaluation"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation called then retrives stdout and stderr"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation can not able to change variable."></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation restore mocked function after evaluation"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation prevents exit"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation calls shellspec_evaluation_cleanup() after evaluation"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation accepts evaluatable string"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh invoke evaluation ensures errno 0 before calling external command"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() does not outputs anything and returns success"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stdout and returns success"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stderr and returns success"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stdout and stderr and returns success"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() does not output anything and returns error"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stdout and returns error"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stderr and returns error"></testcase>
+    <testcase classname="spec/core/evaluation_spec.sh" name="core/evaluation.sh shellspec_evaluation_cleanup() outputs to stdout and stderr and returns error"></testcase>
+  </testsuite>
+  <testsuite id="4" tests="4" failures="0" skipped="0" name="spec/core/hook_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/hook_spec.sh" name="core/hook.sh shellspec_call_before_hooks() does nothing if not exists hooks"></testcase>
+    <testcase classname="spec/core/hook_spec.sh" name="core/hook.sh shellspec_call_before_hooks() calls hooks in registration order if exists hooks"></testcase>
+    <testcase classname="spec/core/hook_spec.sh" name="core/hook.sh shellspec_call_after_hooks() does nothing if not exists hooks"></testcase>
+    <testcase classname="spec/core/hook_spec.sh" name="core/hook.sh shellspec_call_after_hooks() calls hooks in reverse registration order if exists hooks"></testcase>
+  </testsuite>
+  <testsuite id="5" tests="15" failures="0" skipped="1" name="spec/core/matchers/be/empty_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty file matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty file matcher when path is empty file matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty file matcher when path is not empty file does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty file matcher when path does not exist does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty file matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when path is empty file does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when path does not exists does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when path empty directory matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when directory contains &quot;file&quot; file does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when directory contains &quot;*&quot; file does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when directory contains &quot;.dot&quot; file does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when disabled noglob does not matches"></testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher when enabled failglob in bash matches">
+      <skip message="Skipped because is not bash" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/empty_spec.sh" name="core/matchers/be/empty.sh be empty directory matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="6" tests="44" failures="0" skipped="32" name="spec/core/matchers/be/stat_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be exist matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be exist matcher when path exists matches"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be exist matcher when path does not exist does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be exist matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be file matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be file matcher when path is regular file matches"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be file matcher when path is not regular file does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be file matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be directory matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be directory matcher when path is directory matches"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be directory matcher when path is not directory does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be directory matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be symlink matcher example">
+      <skip message="Skipped because not exist symlink file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be symlink matcher when path is symlink matches">
+      <skip message="Skipped because not exist symlink file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be symlink matcher when path is not symlink does not match">
+      <skip message="Skipped because not exist symlink file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be symlink matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist symlink file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be pipe matcher example">
+      <skip message="Skipped because not exist pipe file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be pipe matcher when path is pipe matches">
+      <skip message="Skipped because not exist pipe file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be pipe matcher when path is not pipe does not match">
+      <skip message="Skipped because not exist pipe file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be pipe matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist pipe file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be socket matcher example">
+      <skip message="Skipped because not exist socket file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be socket matcher when path is socket matches">
+      <skip message="Skipped because not exist socket file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be socket matcher when path is not socket does not match">
+      <skip message="Skipped because not exist socket file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be socket matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist socket file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be readable matcher example">
+      <skip message="Skipped because not exist readable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be readable matcher when path is readable matches">
+      <skip message="Skipped because not exist readable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be readable matcher when path is not readable does not match">
+      <skip message="Skipped because not exist readable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be readable matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist readable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be writable matcher example">
+      <skip message="Skipped because not exist writable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be writable matcher when path is writable matches">
+      <skip message="Skipped because not exist writable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be writable matcher when path is not writable does not match">
+      <skip message="Skipped because not exist writable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be writable matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist writable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be executable matcher example">
+      <skip message="Skipped because not exist executable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be executable matcher when path is executable matches">
+      <skip message="Skipped because not exist executable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be executable matcher when path is not executable does not match">
+      <skip message="Skipped because not exist executable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be executable matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist executable file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be block device matcher example">
+      <skip message="Skipped because not exist block-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be block device matcher when path is block device matches">
+      <skip message="Skipped because not exist block-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be block device matcher when path is not block device does not match">
+      <skip message="Skipped because not exist block-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be block device matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist block-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be charactor device matcher example">
+      <skip message="Skipped because not exist charactor-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be charactor device matcher when path is charactor device matches">
+      <skip message="Skipped because not exist charactor-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be charactor device matcher when path is not charactor device does not match">
+      <skip message="Skipped because not exist charactor-device file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/be/stat_spec.sh" name="core/matchers/be/stat.sh be charactor device matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist charactor-device file" />
+    </testcase>
+  </testsuite>
+  <testsuite id="7" tests="17" failures="0" skipped="0" name="spec/core/matchers/be/status_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher when subject is 0 matches"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher when subject is 1 does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher when subject is non numeric values does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher when subject is zero length string does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher when subject is undefined does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be success matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is 1 matches"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is 0 does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is -1 does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is 255 matches"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is 256 does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is non numeric values does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is zero length string does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher when subject is undefined does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/status_spec.sh" name="core/matchers/be/status.sh be failure matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="8" tests="8" failures="0" skipped="0" name="spec/core/matchers/be/valid_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a number matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a number matcher when subject is 123 matches"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a number matcher when subject is undefined does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a number matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a funcname matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a funcname matcher when subject is foo_bar matches"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a funcname matcher when subject is undefined does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/valid_spec.sh" name="core/matchers/be/valid.sh be a funcname matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="9" tests="18" failures="0" skipped="0" name="spec/core/matchers/be/variable_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be defined matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be defined matcher when subject is empty string matches"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be defined matcher when subject is undefined does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be defined matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be undefined matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be undefined matcher when subject is empty string does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be undefined matcher when subject is undefined matches"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be undefined matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be present matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be present matcher when subject is non zero length string matches"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be present matcher when subject is zero length string does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be present matcher when subject is undefind does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be present matcher outputs error if parameters count is invalid"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be blank matcher example"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be blank matcher when subject is zero length string matches"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be blank matcher when subject is undefind matches"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be blank matcher when subject is non zero length string does not match"></testcase>
+    <testcase classname="spec/core/matchers/be/variable_spec.sh" name="core/matchers/be/variable.sh be blank matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="10" tests="5" failures="0" skipped="0" name="spec/core/matchers/end_with_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/end_with_spec.sh" name="core/matchers/end_with.sh end with matcher example"></testcase>
+    <testcase classname="spec/core/matchers/end_with_spec.sh" name="core/matchers/end_with.sh end with matcher when subject is abcdef matches string that end with &quot;def&quot;"></testcase>
+    <testcase classname="spec/core/matchers/end_with_spec.sh" name="core/matchers/end_with.sh end with matcher when subject is abcdef does not match string that end with &quot;DEF&quot;"></testcase>
+    <testcase classname="spec/core/matchers/end_with_spec.sh" name="core/matchers/end_with.sh end with matcher outputs error if parameters is missing"></testcase>
+    <testcase classname="spec/core/matchers/end_with_spec.sh" name="core/matchers/end_with.sh end with matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="11" tests="6" failures="0" skipped="0" name="spec/core/matchers/equal_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher example"></testcase>
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher when subject is &quot;foo bar&quot; matches string &quot;foo bar&quot;"></testcase>
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher when subject is &quot;foo bar&quot; does not match string &quot;foo&quot;"></testcase>
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher when subject is undefined does not match string &quot;&quot;"></testcase>
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher outputs error if parameters is missing"></testcase>
+    <testcase classname="spec/core/matchers/equal_spec.sh" name="core/matchers/eq.sh equal matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="12" tests="8" failures="0" skipped="8" name="spec/core/matchers/has/stat_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setgid matcher example">
+      <skip message="Skipped because not exist setgid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setgid matcher when path has setgid flag matches">
+      <skip message="Skipped because not exist setgid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setgid matcher when path does not have setgid flag does not match">
+      <skip message="Skipped because not exist setgid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setgid matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist setgid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setuid matcher example">
+      <skip message="Skipped because not exist setuid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setuid matcher when path has setuid flag matches">
+      <skip message="Skipped because not exist setuid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setuid matcher when path does not have setuid flag does not match">
+      <skip message="Skipped because not exist setuid file" />
+    </testcase>
+    <testcase classname="spec/core/matchers/has/stat_spec.sh" name="core/matchers/has/stat.sh has setuid matcher outputs error if parameters count is invalid">
+      <skip message="Skipped because not exist setuid file" />
+    </testcase>
+  </testsuite>
+  <testsuite id="13" tests="5" failures="0" skipped="0" name="spec/core/matchers/include_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/include_spec.sh" name="core/matchers/include.sh include matcher example"></testcase>
+    <testcase classname="spec/core/matchers/include_spec.sh" name="core/matchers/include.sh include matcher when subject is foo&lt;LF&gt;bar&lt;LF&gt;baz&lt;LF&gt; matches that include &quot;bar&quot;"></testcase>
+    <testcase classname="spec/core/matchers/include_spec.sh" name="core/matchers/include.sh include matcher when subject is foo&lt;LF&gt;BAR&lt;LF&gt;baz&lt;LF&gt; does not matches that include &quot;bar&quot;"></testcase>
+    <testcase classname="spec/core/matchers/include_spec.sh" name="core/matchers/include.sh include matcher outputs error if parameters is missing"></testcase>
+    <testcase classname="spec/core/matchers/include_spec.sh" name="core/matchers/include.sh include matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="14" tests="6" failures="0" skipped="0" name="spec/core/matchers/match_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher example"></testcase>
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher when subject is foobarbaz matches with pattern &quot;foo*&quot;"></testcase>
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher when subject is foobarbaz does not match with pattern &quot;FOO*&quot;"></testcase>
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher when subject is undefined does not match with pattern &quot;*&quot;"></testcase>
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher outputs error if parameters is missing"></testcase>
+    <testcase classname="spec/core/matchers/match_spec.sh" name="core/matchers/match.sh match matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="15" tests="4" failures="0" skipped="0" name="spec/core/matchers/satisfy_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/satisfy_spec.sh" name="core/matchers/satisfy.sh satisfy matcher example"></testcase>
+    <testcase classname="spec/core/matchers/satisfy_spec.sh" name="core/matchers/satisfy.sh satisfy matcher when subject is 10 satisfies greater than 5"></testcase>
+    <testcase classname="spec/core/matchers/satisfy_spec.sh" name="core/matchers/satisfy.sh satisfy matcher when subject is 10 does not satisfies greater than 20"></testcase>
+    <testcase classname="spec/core/matchers/satisfy_spec.sh" name="core/matchers/satisfy.sh satisfy matcher outputs error if parameters is missing"></testcase>
+  </testsuite>
+  <testsuite id="16" tests="5" failures="0" skipped="0" name="spec/core/matchers/start_with_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/matchers/start_with_spec.sh" name="core/matchers/start_with.sh start with matcher example"></testcase>
+    <testcase classname="spec/core/matchers/start_with_spec.sh" name="core/matchers/start_with.sh start with matcher when subject is abcdef matches string that start with &quot;abc&quot;"></testcase>
+    <testcase classname="spec/core/matchers/start_with_spec.sh" name="core/matchers/start_with.sh start with matcher when subject is abcdef does not match string that start with &quot;ABC&quot;"></testcase>
+    <testcase classname="spec/core/matchers/start_with_spec.sh" name="core/matchers/start_with.sh start with matcher outputs error if parameters is missing"></testcase>
+    <testcase classname="spec/core/matchers/start_with_spec.sh" name="core/matchers/start_with.sh start with matcher outputs error if parameters count is invalid"></testcase>
+  </testsuite>
+  <testsuite id="17" tests="10" failures="0" skipped="0" name="spec/core/modifiers/contents_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh contents modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh contents modifier when file exists reads the contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh contents modifier when file not exists cannot reads the contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh contents modifier when file not specified cannot reads the contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh contents modifier outputs error if next modifier is missing"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh entire contents modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh entire contents modifier when file exists reads the entire contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh entire contents modifier when file not exists can not reads the entire contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh entire contents modifier when file not specified can not read the entire contents of the file"></testcase>
+    <testcase classname="spec/core/modifiers/contents_spec.sh" name="core/modifiers/contents.sh entire contents modifier outputs error if next modifier is missing"></testcase>
+  </testsuite>
+  <testsuite id="18" tests="4" failures="0" skipped="0" name="spec/core/modifiers/length_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/length_spec.sh" name="core/modifiers/length.sh length modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/length_spec.sh" name="core/modifiers/length.sh length modifier when subject is defined counts length"></testcase>
+    <testcase classname="spec/core/modifiers/length_spec.sh" name="core/modifiers/length.sh length modifier when subject is undefined can not counts length"></testcase>
+    <testcase classname="spec/core/modifiers/length_spec.sh" name="core/modifiers/length.sh length modifier outputs error if next modifier is missing"></testcase>
+  </testsuite>
+  <testsuite id="19" tests="10" failures="0" skipped="0" name="spec/core/modifiers/line_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is &quot;foo&lt;LF&gt;bar&lt;LF&gt;baz&quot; get the second line as &quot;bar&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is &quot;foo&lt;LF&gt;&quot; can not get the second line"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is &quot;foo&lt;LF&gt;&lt;LF&gt;&quot; get the second line as &quot;&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is empty string can not get the first line"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is &quot;&lt;LF&gt;&quot; get the second line as &quot;&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier when subject is undefined can not get the first line"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier outputs error if value is not a number"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier outputs error if value is missing"></testcase>
+    <testcase classname="spec/core/modifiers/line_spec.sh" name="core/modifiers/line.sh line modifier outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="20" tests="7" failures="0" skipped="0" name="spec/core/modifiers/lines_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier when subject is &quot;foo&lt;LF&gt;bar&lt;LF&gt;&quot; (with last LF) counts as 2 lines"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier when subject is &quot;foo&lt;LF&gt;bar&quot; (without last LF) counts as 2 lines"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier when subject is &quot;foo&lt;LF&gt;bar&lt;LF&gt;&lt;LF&gt;&quot; counts as 3 lines"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier when subject is empty string counts as 0 lines"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier when subject is undefined can not counts lines"></testcase>
+    <testcase classname="spec/core/modifiers/lines_spec.sh" name="core/modifiers/lines.sh lines modifier outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="21" tests="7" failures="0" skipped="0" name="spec/core/modifiers/result_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier when subject is function that returns success when subject output to stdout gets stdout"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier when subject is function that returns success when subject output to stdout gets stderr"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier when subject is function that returns failure when subject output to stdout gets stdout"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier when subject is function that returns failure when subject output to stdout gets stderr"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier when subject is undefined can not calls function"></testcase>
+    <testcase classname="spec/core/modifiers/result_spec.sh" name="core/modifiers/result.sh result modifier outputs error if next modifier is missing"></testcase>
+  </testsuite>
+  <testsuite id="22" tests="8" failures="0" skipped="0" name="spec/core/modifiers/word_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier example"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier when subject is &quot;foo  bar &lt;TAB&gt; baz &lt;LF&gt; qux&quot; get the second word as &quot;bar&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier when subject is &quot;foo  bar &lt;TAB&gt; baz &lt;LF&gt; qux&quot; get the third word as &quot;baz&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier when subject is &quot;foo  bar &lt;TAB&gt; baz &lt;LF&gt; qux&quot; get the third word as &quot;qux&quot;"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier when subject is undefined can not the get word"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier outputs error if value is not a number"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier outputs error if value is missing"></testcase>
+    <testcase classname="spec/core/modifiers/word_spec.sh" name="core/modifiers/word.sh word modifier outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="23" tests="1" failures="0" skipped="0" name="spec/core/output_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/output_spec.sh" name="core/output.sh shellspec_output_syntax_name() outputs syntax name"></testcase>
+  </testsuite>
+  <testsuite id="24" tests="6" failures="0" skipped="0" name="spec/core/statement_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_preposition() reorders parameters and calls shellspec_statement_ordinal"></testcase>
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_preposition() does not reorder parameters after 'should'"></testcase>
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_ordinal() changes ordinal number to number and exchange with the next word"></testcase>
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_ordinal() changes ordinal name to number and exchange with the next word"></testcase>
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_ordinal() does not change unknown word"></testcase>
+    <testcase classname="spec/core/statement_spec.sh" name="core/statement.sh shellspec_statement_subject() dispatches to shellspec_subject"></testcase>
+  </testsuite>
+  <testsuite id="25" tests="5" failures="0" skipped="0" name="spec/core/subjects/path_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/path_spec.sh" name="core/subjects/path.sh path subject example"></testcase>
+    <testcase classname="spec/core/subjects/path_spec.sh" name="core/subjects/path.sh path subject when path alias is not exists uses parameter as subject"></testcase>
+    <testcase classname="spec/core/subjects/path_spec.sh" name="core/subjects/path.sh path subject when path alias is exists converts alias to path and uses as subject"></testcase>
+    <testcase classname="spec/core/subjects/path_spec.sh" name="core/subjects/path.sh path subject outputs error if path is missing"></testcase>
+    <testcase classname="spec/core/subjects/path_spec.sh" name="core/subjects/path.sh path subject outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="26" tests="4" failures="0" skipped="0" name="spec/core/subjects/status_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/status_spec.sh" name="core/subjects/status.sh status subject example"></testcase>
+    <testcase classname="spec/core/subjects/status_spec.sh" name="core/subjects/status.sh status subject when status is defined uses status as subject"></testcase>
+    <testcase classname="spec/core/subjects/status_spec.sh" name="core/subjects/status.sh status subject when status is undefind uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/status_spec.sh" name="core/subjects/status.sh status subject outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="27" tests="8" failures="0" skipped="0" name="spec/core/subjects/stderr_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh stderr subject example"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh stderr subject when stderr is defined uses stderr as subject"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh stderr subject when stderr is undefined uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh stderr subject outputs error if next word is missing"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh entire stderr subject example"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh entire stderr subject when stderr is defined uses stderr including last LF as subject"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh entire stderr subject when stderr is undefined uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/stderr_spec.sh" name="core/subjects/stderr.sh entire stderr subject outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="28" tests="8" failures="0" skipped="0" name="spec/core/subjects/stdout_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh stdout subject example"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh stdout subject when stdout is defined uses stdout as subject"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh stdout subject when stdout is undefined uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh stdout subject outputs error if next word is missing"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh entire stdout subject example"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh entire stdout subject when stdout is defined uses stdout including last LF as subject"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh entire stdout subject when stdout is undefined uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/stdout_spec.sh" name="core/subjects/stdout.sh entire stdout subject output error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="29" tests="4" failures="0" skipped="0" name="spec/core/subjects/value_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/value_spec.sh" name="core/subjects/value.sh value subject example"></testcase>
+    <testcase classname="spec/core/subjects/value_spec.sh" name="core/subjects/value.sh value subject uses parameter as subject"></testcase>
+    <testcase classname="spec/core/subjects/value_spec.sh" name="core/subjects/value.sh value subject outputs error if value is missing"></testcase>
+    <testcase classname="spec/core/subjects/value_spec.sh" name="core/subjects/value.sh value subject outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="30" tests="5" failures="0" skipped="0" name="spec/core/subjects/variable_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+    <testcase classname="spec/core/subjects/variable_spec.sh" name="core/subjects/variable.sh variable subject when var is foo example"></testcase>
+    <testcase classname="spec/core/subjects/variable_spec.sh" name="core/subjects/variable.sh variable subject when the variable exists uses the value of variable as subject"></testcase>
+    <testcase classname="spec/core/subjects/variable_spec.sh" name="core/subjects/variable.sh variable subject when the variable not exists uses undefined as subject"></testcase>
+    <testcase classname="spec/core/subjects/variable_spec.sh" name="core/subjects/variable.sh variable subject outputs error if value is missing"></testcase>
+    <testcase classname="spec/core/subjects/variable_spec.sh" name="core/subjects/variable.sh variable subject outputs error if next word is missing"></testcase>
+  </testsuite>
+  <testsuite id="31" tests="0" failures="0" skipped="0" name="spec/core/subjects_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:38">
+  </testsuite>
+  <testsuite id="32" tests="10" failures="0" skipped="0" name="spec/core/switch_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_on() turns on the switch"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_off() turns off the switch"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_toggle() turns on the switch if condition is succeed"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_toggle() turns off the switch if condition is failed"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_if() when switch is on returns true"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_if() when switch is off returns false"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_if() when switch is undefined returns false"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_unless() when switch is on returns false"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_unless() when switch is off returns true"></testcase>
+    <testcase classname="spec/core/switch_spec.sh" name="core/switch.sh shellspec_unless() when switch is undefined returns true"></testcase>
+  </testsuite>
+  <testsuite id="33" tests="5" failures="0" skipped="0" name="spec/core/syntax_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/core/syntax_spec.sh" name="core/syntax.sh example"></testcase>
+    <testcase classname="spec/core/syntax_spec.sh" name="core/syntax.sh shellspec_syntax_param() number succeeds if the parameters count satisfies the condition"></testcase>
+    <testcase classname="spec/core/syntax_spec.sh" name="core/syntax.sh shellspec_syntax_param() number fails if the parameters count not satisfies the condition"></testcase>
+    <testcase classname="spec/core/syntax_spec.sh" name="core/syntax.sh shellspec_syntax_param() N (parameter position) succeeds if the parameter is number"></testcase>
+    <testcase classname="spec/core/syntax_spec.sh" name="core/syntax.sh shellspec_syntax_param() N (parameter position) fails if the parameter is not number"></testcase>
+  </testsuite>
+  <testsuite id="34" tests="15" failures="0" skipped="0" name="spec/core/utils_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_get_nth() fetch nth value seperate by ,"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_get_nth() fetch nth value seperate by space"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() number succeeds with a numeric value"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() number fails with a not numeric value"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() number fails with a zero length string"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() number fails with a empty"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname succeeds with valid function name foo_bar"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname succeeds with valid function name foo123"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname fails with invalid function name"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname fails with start with number"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname fails with a zero length string"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_is() funcname fails with a empty"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_capture() when function outputs &quot;ok&quot; captures &quot;ok&quot;"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_capture() when function outputs &quot;ok&lt;LF&gt;&quot; captures &quot;ok&lt;LF&gt;&quot;"></testcase>
+    <testcase classname="spec/core/utils_spec.sh" name="core/utils.sh shellspec_capture() when function return false can not capture"></testcase>
+  </testsuite>
+  <testsuite id="35" tests="8" failures="0" skipped="0" name="spec/core/verb_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should verb outputs MATCHED if matcher matched"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should verb outputs UNMATCHED if matcher unmatched"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should verb outputs SYNTAX_ERROR_MATCHER_REQUIRED if matcher missing"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should verb returns if SYNTAX_ERROR"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should not verb outputs UNMATCHED if matcher matched"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should not verb outputs MATCHED if matcher unmatched"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should not verb outputs SYNTAX_ERROR_MATCHER_REQUIRED if matcher missing"></testcase>
+    <testcase classname="spec/core/verb_spec.sh" name="core/verb.sh should not verb returns if SYNTAX_ERROR"></testcase>
+  </testsuite>
+  <testsuite id="36" tests="45" failures="0" skipped="0" name="spec/general_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_reset_params() separates by &quot;'&quot;"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_reset_params() separates by &quot;:&quot; (fourth argument only)"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_splice_params() when offset is 0 removes all parameters"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_splice_params() when offset is 2 removes all parameters after offset 2"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_splice_params() when offset is 3 and length is 2 removes 2 parameters after offset 3"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_splice_params() when offset is 3 and length is 2 and list specified removes 2 parameters after offset 3 and inserts list"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_each() calls callback with index and value"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_each() calls callback with no params"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_find() calls callback with index and value"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_sequence() calls callback with sequence of numbers"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_sequence() calls callback with sequence of numbers with step N"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_sequence() calls callback with reversed sequence of numbers"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_sequence() calls callback with reversed sequence of numbers with step N"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() does not output anything without arguments"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() outputs arguments"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() joins arguments with space and outputs"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() outputs with raw string"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() outputs &quot;-n&quot;"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_puts() when change IFS joins arguments with spaces"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_putsn() does not output anything without arguments"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_putsn() outputs append with LF"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_putsn() joins arguments with space and outputs append with LF"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_putsn() outputs with raw string append with LF"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_putsn() when change IFS joins arguments with spaces"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_escape_quote() returns escaped string that evaluatable by eval"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_lines() does not call callback with empty string"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_lines() calls callback by each line"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_lines() ignores last LF"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_lines() can cancels calls of callback."></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_padding() paddings with @"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() returns success if includes value"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() returns failure if not includes value"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() treats | as not meta character"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() treats * as not meta character"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() treats ? as not meta character"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() treats [] as not meta character"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_includes() treats &quot; as not meta character"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_passthrough() passes through to stdout from stdin"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_passthrough() passes through data that not end with LF"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_readfile() reads the file as is"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_trim() when value is abc trims left space"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_trim() when value is &lt;TAB&gt;&lt;TAB&gt;abc trims left tab"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_replace() replaces various characters"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_join() joins arguments by space"></testcase>
+    <testcase classname="spec/general_spec.sh" name="general.sh shellspec_join() when IFS is @ joins arguments by space"></testcase>
+  </testsuite>
+  <testsuite id="37" tests="24" failures="0" skipped="0" name="spec/libexec/reporter_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh read_time_log() does not read anything if file missing"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh read_time_log() reads log data if file exists"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when initial state is not present"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when initial state is empty"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when initial state is not open"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when initial state is not flowed"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when something is in the buffer is present"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() when something is in the buffer is not empty"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() = sets to the buffer and opened"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() |= when the buffer is empty sets to the buffer and opened"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() |= when the buffer is not empty not sets to the buffer and opened"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() += when the buffer is empty sets to the buffer and opened"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() += when the buffer is not empty not sets to the buffer and opened"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &lt;|&gt; opens the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;|&lt; closes the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;|&lt; when not flowed does not clear the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;|&lt; when flowed clears the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;&gt;&gt; when the buffer is open outputs the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;&gt;&gt; when the buffer is open outputs same things"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh buffer() &gt;&gt;&gt; when the buffer is close not outputs the buffer"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh xmlescape() escapes special characters"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh xmlattrs() creates xml attributes"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh remove_escape_sequence() removes escape sequence"></testcase>
+    <testcase classname="spec/libexec/reporter_spec.sh" name="libexec/reporter.sh inc() increments variables"></testcase>
+  </testsuite>
+  <testsuite id="38" tests="2" failures="0" skipped="0" name="spec/libexec/runner_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/libexec/runner_spec.sh" name="libexec/runner.sh mktempdir() makes tempdir"></testcase>
+    <testcase classname="spec/libexec/runner_spec.sh" name="libexec/runner.sh rmtempdir() deletes tempdir"></testcase>
+  </testsuite>
+  <testsuite id="39" tests="10" failures="0" skipped="0" name="spec/libexec/shellspec_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_dot_file() reads dot file"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_dot_file() does not read dot file if not specified directory"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_cmdline() parses /proc/&lt;PID&gt;/cmdline"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_ps() when procps format parses and detects shell"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_ps() when busybox ps format 1 parses and detects shell"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_ps() when busybox ps format 2 parses and detects shell"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh read_ps() when busybox ps format 3 parses and detects shell"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh current_shell() removes arguments"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh current_shell() when read_cmdline empty string calls read_ps"></testcase>
+    <testcase classname="spec/libexec/shellspec_spec.sh" name="libexec/shellspec.sh current_shell() when read_cmdline return string does not call read_ps"></testcase>
+  </testsuite>
+  <testsuite id="40" tests="0" failures="0" skipped="0" name="spec/libexec/translator_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+  </testsuite>
+  <testsuite id="41" tests="7" failures="0" skipped="0" name="spec/libexec_spec.sh" hostname="32e05a66995a" timestamp="2019-07-04T02:16:39">
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh is_specfile() returns success when pattern matches the filename"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh is_specfile() returns success when pattern matches the filename with range"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh is_specfile() returns failure when pattern not matches the filename"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh found_specfile() calls callback with no range"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh found_specfile() calls callback with range"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh find_specfiles() find files from arguments"></testcase>
+    <testcase classname="spec/libexec_spec.sh" name="libexec.sh find_specfiles() find files from INFILE"></testcase>
+  </testsuite>
 </testsuites>
