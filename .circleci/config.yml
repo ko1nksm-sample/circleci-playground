@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: alpine
     steps:
-      - run: apk add -quiet --no-cache ca-certificates
+      - run: apk add --quiet --no-cache ca-certificates
       - checkout
       - run: ls
       - store_test_results:
