@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: koalaman/shellcheck-alpine
+      - image: alpine
     steps:
       - checkout
-      - run: shellcheck test.sh
+      - run: cat test.sh
