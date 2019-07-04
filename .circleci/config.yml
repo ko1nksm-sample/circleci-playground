@@ -5,5 +5,4 @@ jobs:
       - image: alpine
     steps:
       - checkout
-      - run: pwd
-      - run: ls -al
+      - run: cat test.sh
