@@ -1,6 +1,12 @@
 version: 2
 jobs:
-  build:
+  lint:
+    docker:
+      - image: koalaman/shellcheck-alpine
+    steps:
+      - checkout
+      - run: shellcheck test.sh
+  test:
     working_directory: ~/shellspec
     docker:
       - image: alpine
@@ -17,9 +23,9 @@ jobs:
           path: ~/report
       - store_artifacts:
           path: report
-#  lint:
-#    docker:
-#      - image: koalaman/shellcheck-alpine
-#    steps:
-#      - checkout
-#      - run: shellcheck test.sh
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lint
+      - test
