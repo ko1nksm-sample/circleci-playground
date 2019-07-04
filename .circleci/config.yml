@@ -7,7 +7,7 @@ jobs:
       - run: apk add --quiet --no-cache ca-certificates
       - checkout
       - run: mkdir ~/rspec
-      - run: cp report/results_junit.xml ~/rspec/rspec.xml
+      - run: cp report/results_junit.xml ~/rspec/test.xml
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
