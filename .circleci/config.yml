@@ -6,10 +6,10 @@ jobs:
     steps:
       - run: apk add --quiet --no-cache ca-certificates
       - checkout
-      - run: mkdir ~/rspec
-      - run: cp report/results_junit.xml ~/rspec/test.xml
+      - run: mkdir ~/shellspec
+      - run: cp report/results_junit.xml ~/shellspec/shellspec.xml
       - store_test_results:
-          path: ~/rspec
+          path: ~/shellspec
       - store_artifacts:
           path: report
 #  lint:
