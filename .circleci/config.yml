@@ -16,9 +16,13 @@ jobs:
       - run:
           command: |
             mkdir -p ~/report/shellspec
+            /bin/false
             cp report/results_junit.xml ~/report/shellspec/
-            #/bin/false
           when: always
+      - store_test_results:
+          path: ~/report
+      - store_artifacts:
+          path: report
 workflows:
   version: 2
   lint_and_test:
