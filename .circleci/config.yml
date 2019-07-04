@@ -6,6 +6,8 @@ jobs:
     steps:
       - checkout
       - run: ls
+      - store_test_results:
+        path: report
 #  lint:
 #    docker:
 #      - image: koalaman/shellcheck-alpine
