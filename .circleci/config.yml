@@ -5,8 +5,7 @@ jobs:
       - image: alpine
     steps:
       - checkout
-      - run: git --version
-      - run: cat test.sh
+      - run: ls
 #  lint:
 #    docker:
 #      - image: koalaman/shellcheck-alpine
