@@ -13,3 +13,9 @@ jobs:
       # Commands will execute in macOS container
       # with Xcode 11.3 installed
       - run: xcodebuild -version
+workflows:
+  version: 2
+  all:
+    jobs:
+      - node
+      - macos
