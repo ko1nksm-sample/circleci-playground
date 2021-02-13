@@ -1,8 +1,15 @@
 version: 2
 jobs:
-  build:
+  node:
     docker:
       - image: circleci/node:8.11.3
     steps:
       - checkout
       - run: echo ok
+  macos:
+    macos:
+      xcode: 11.3.0
+    steps:
+      # Commands will execute in macOS container
+      # with Xcode 11.3 installed
+      - run: xcodebuild -version
